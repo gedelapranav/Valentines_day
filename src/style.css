@@ -1,0 +1,416 @@
+:root {
+  --primary: #ff4d6d;
+  --secondary: #ff8fa3;
+  --bg-gradient: linear-gradient(135deg, #fff0f3 0%, #ffe5ec 100%);
+  --glass-bg: rgba(255, 255, 255, 0.6);
+  --glass-border: rgba(255, 255, 255, 0.8);
+  --text-main: #590d22;
+  --font-heading: 'Great Vibes', cursive;
+  --font-body: 'Outfit', sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-body);
+  background: var(--bg-gradient);
+  color: var(--text-main);
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+
+/* Background Hearts */
+#heart-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: -1;
+  overflow: hidden;
+}
+
+.floating-heart {
+  position: absolute;
+  color: var(--secondary);
+  opacity: 0.6;
+  animation: floatUp linear infinite;
+}
+
+@keyframes floatUp {
+  0% {
+    transform: translateY(100vh) scale(0.5);
+    opacity: 0;
+  }
+
+  10% {
+    opacity: 0.8;
+  }
+
+  100% {
+    transform: translateY(-100px) scale(1.5);
+    opacity: 0;
+  }
+}
+
+/* Typography */
+h1 {
+  font-family: var(--font-heading);
+  font-size: 5rem;
+  color: var(--primary);
+  text-shadow: 2px 2px 4px rgba(255, 77, 109, 0.2);
+  line-height: 1.2;
+}
+
+h2 {
+  font-family: var(--font-heading);
+  font-size: 3rem;
+  color: var(--primary);
+  margin-bottom: 2rem;
+}
+
+p {
+  line-height: 1.6;
+  font-size: 1.1rem;
+}
+
+/* Sections */
+.hero-section {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  position: relative;
+}
+
+.section {
+  padding: 5rem 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+  position: relative;
+}
+
+/* Animations */
+.fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 1.5s forwards;
+}
+
+.delay-1 {
+  animation-delay: 0.5s;
+}
+
+.delay-2 {
+  animation-delay: 1s;
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Gallery */
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  padding: 2rem 0;
+}
+
+.card {
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: 20px;
+  padding: 1rem;
+  box-shadow: 0 8px 32px rgba(255, 77, 109, 0.1);
+  backdrop-filter: blur(10px);
+  transition: transform 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-10px) rotate(2deg);
+}
+
+.placeholder {
+  height: 300px;
+  background: rgba(255, 255, 255, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 15px;
+  color: var(--secondary);
+  font-weight: 600;
+}
+
+.gallery-grid img {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+  border-radius: 15px;
+  display: block;
+}
+
+/* Letter */
+.letter-section {
+  perspective: 1000px;
+}
+
+.paper {
+  background: #fff;
+  padding: 4rem;
+  max-width: 600px;
+  margin: 0 auto;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
+  transform: rotate(-1deg);
+  position: relative;
+  border-radius: 2px;
+}
+
+.paper::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, transparent 0%, rgba(0, 0, 0, 0.02) 100%);
+  pointer-events: none;
+}
+
+.handwriting {
+  margin-bottom: 1.5rem;
+}
+
+.body-text {
+  font-family: 'Outfit', sans-serif;
+  /* Or a handwriting font if preferred for body */
+  text-align: left;
+  font-size: 1.2rem;
+}
+
+footer {
+  text-align: center;
+  padding: 2rem;
+  opacity: 0.7;
+  font-size: 0.9rem;
+}
+
+/* Stickers */
+.sticker {
+  position: absolute;
+  pointer-events: none;
+  filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.1));
+  z-index: 10;
+}
+
+.sticker-cupid {
+  width: 150px;
+  top: -20px;
+  right: -20px;
+  transform: rotate(15deg);
+  animation: floatsticker 3s ease-in-out infinite;
+}
+
+.sticker-heart-1 {
+  width: 80px;
+  top: -30px;
+  left: -30px;
+  transform: rotate(-20deg);
+}
+
+.sticker-heart-2 {
+  width: 60px;
+  bottom: -20px;
+  right: -20px;
+  transform: rotate(10deg);
+}
+
+@keyframes floatsticker {
+
+  0%,
+  100% {
+    transform: translateY(0) rotate(15deg);
+  }
+
+  50% {
+    transform: translateY(-10px) rotate(15deg);
+  }
+}
+
+@media (max-width: 768px) {
+  .sticker-cupid {
+    width: 100px;
+    right: 0;
+  }
+}
+
+/* Cinematic Section */
+/* Anime Section */
+.anime-section {
+  width: 100%;
+  height: 80vh;
+  position: relative;
+  overflow: hidden;
+  margin-top: 5rem;
+}
+
+.scene-container {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.bg-layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url('/images/anime_bg.png') no-repeat center center/cover;
+  z-index: 1;
+}
+
+.character {
+  position: absolute;
+  bottom: 0;
+  height: 50%;
+  z-index: 2;
+  mix-blend-mode: multiply;
+  /* Blends white background */
+}
+
+.boy {
+  left: -20%;
+  animation: walkRight 4.5s linear forwards;
+}
+
+.girl {
+  right: -20%;
+  transform: scaleX(-1);
+  animation: walkLeft 4.5s linear forwards;
+}
+
+.hug-scene-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 3;
+  opacity: 0;
+  animation: showHug 1s ease-in forwards 4.2s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hug-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  animation: slowZoom 10s alternate infinite;
+}
+
+.anime-text {
+  position: absolute;
+  bottom: 15%;
+  width: 100%;
+  text-align: center;
+  z-index: 4;
+  opacity: 0;
+  animation: fadeInText 2s ease-in forwards 5s;
+}
+
+.anime-text h2 {
+  color: #fff;
+  font-family: 'Great Vibes', cursive;
+  font-size: 4rem;
+  text-shadow: 0 4px 10px rgba(0, 0, 0, 0.6);
+}
+
+/* Keyframes */
+@keyframes walkRight {
+  0% {
+    left: -20%;
+    transform: rotate(0deg);
+  }
+
+  25% {
+    transform: rotate(2deg);
+  }
+
+  50% {
+    transform: rotate(-2deg);
+  }
+
+  75% {
+    transform: rotate(2deg);
+  }
+
+  100% {
+    left: 40%;
+    opacity: 0;
+  }
+}
+
+@keyframes walkLeft {
+  0% {
+    right: -20%;
+    transform: scaleX(-1) rotate(0deg);
+  }
+
+  25% {
+    transform: scaleX(-1) rotate(2deg);
+  }
+
+  50% {
+    transform: scaleX(-1) rotate(-2deg);
+  }
+
+  75% {
+    transform: scaleX(-1) rotate(2deg);
+  }
+
+  100% {
+    right: 40%;
+    opacity: 0;
+    transform: scaleX(-1);
+  }
+}
+
+@keyframes showHug {
+  0% {
+    opacity: 0;
+    transform: scale(1.1);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes slowZoom {
+  to {
+    transform: scale(1.05);
+  }
+}
+
+
+
+@keyframes fadeInText {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
